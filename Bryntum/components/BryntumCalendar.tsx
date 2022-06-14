@@ -50,10 +50,7 @@
  
      return (
          <Fragment>
-             <BryntumDemoHeader
-                 href = "../../../../../#example-frameworks-react-typescript-basic"
-                 children = {<BryntumThemeCombo />}
-             />
+            <div>PCF Control Sandbox</div>
              <div className = "demo-toolbar align-right">
                  {(() => {
                      return selectedEvent ? (
@@ -65,14 +62,7 @@
                          ''
                      );
                  })()}
- 
-                 <BryntumNumberField
-                     label = "Bar margin"
-                     min = {0}
-                     max = {15}
-                     value = {barMargin}
-                     onChange = {({ value }: { value: number }) => setBarMargin(value)}
-                 />
+
                  <BryntumButton icon = "b-fa-plus" cls = "b-green" onClick = {addEvent} />
                  <BryntumButton
                      icon = "b-fa-trash"

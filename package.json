@@ -10,12 +10,13 @@
     "refreshTypes": "pcf-scripts refreshTypes"
   },
   "dependencies": {
-    "@fluentui/react": "^8.74.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
     "@bryntum/demo-resources": "1.1.0",
+    "@bryntum/scheduler": "npm:@bryntum/scheduler-trial@5.0.5",
     "@bryntum/scheduler-react": "5.0.5",
-    "@bryntum/scheduler": "npm:@bryntum/scheduler-trial@5.0.5"
+    "@fluentui/react": "^8.74.0",
+    "font-awesome": "^4.7.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@types/node": "^16.4",

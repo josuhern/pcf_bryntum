@@ -1,3 +1,9 @@
 .Bryntum .demo-header{
     background-color: #dd7520;
  }
+ .Bryntum .b-container{
+  min-height: 50em !important;
+}
+ .Bryntum {
+   @import "~@bryntum/scheduler/scheduler.classic-light.css";
+ }

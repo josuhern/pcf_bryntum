@@ -35,3 +35,17 @@ npm install @bryntum/scheduler-react@5.0.5
     }
 }
 ```
+
+### How to add resourses in control manifest
+```
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/scheduler.classic-light.css" order="1" />
+      <css path="css/Bryntum.css" order="1" />
+      <css path="css/fonts/fa-solid-900.ttf" order="1" />
+      <css path="css/fonts/fa-solid-900.woff2" order="1" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <resx path="strings/Bryntum.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+```
