@@ -4,12 +4,13 @@ type DataSet = ComponentFramework.PropertyTypes.DataSet;
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
-import BryntumCalendar from './components/BryntumCalendar';
+import {BryntumCalendar, IBookableResouce} from './components/BryntumCalendar';
 initializeIcons(undefined, { disableWarnings: true });
 
 export class Bryntum implements ComponentFramework.StandardControl<IInputs, IOutputs> {
     container: HTMLDivElement;
     context: ComponentFramework.Context<IInputs>;
+    items: IBookableResouce[] = [];
 
     /**
      * Empty constructor.
@@ -43,8 +44,23 @@ export class Bryntum implements ComponentFramework.StandardControl<IInputs, IOut
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
         // Add code to update control view
+
+        const isTestHarness = document.getElementById('control-dimensions') !== null;
+        const dataset = context.parameters.items;
+        const datasetChanged = context.updatedProperties.indexOf('dataset') > -1;
+        if (datasetChanged || isTestHarness) {
+            this.items = dataset.sortedRecordIds.map((id) => {
+                const record = dataset.records[id];
+                return {
+                    id: record.getRecordId(),
+                    fullname: record.getValue('fullname') as string,
+                    title: record.getValue('title') as string,
+                } as IBookableResouce;
+            });
+        }
+
         ReactDOM.render(
-            React.createElement(BryntumCalendar),
+            React.createElement(BryntumCalendar, {items: this.items}),
             this.container,
         );
     }

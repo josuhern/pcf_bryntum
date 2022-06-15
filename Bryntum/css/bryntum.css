@@ -1,10 +1,4 @@
-.Bryntum .demo-header{
-    background-color: #dd7520;
- }
- .Bryntum .b-scheduler {
-  width  : 100%;
+.Bryntum .b-scheduler {
+  background-color: #dd7520;
   height : 600px;
 }
- .Bryntum {
-   @import "~@bryntum/scheduler/scheduler.classic-light.css";
- }

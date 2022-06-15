@@ -11,6 +11,7 @@
     <Name>pcf</Name>
     <ProjectGuid>cfcc1d4c-b797-47d4-aaf6-f10218a39b2d</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
+    <PcfBuildMode>production</PcfBuildMode>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,12 +1,25 @@
 /**
  * Application
  */
- import React, { Fragment, FunctionComponent, useState, useRef, useCallback } from 'react';
+ import React, { Fragment, useState, useRef, useCallback, ReactElement } from 'react';
  import { BryntumScheduler, BryntumButton } from '@bryntum/scheduler-react';
  import { Toast, EventModel, Scheduler } from '@bryntum/scheduler';
- // import '@bryntum/scheduler/scheduler.classic.css';
- 
- const BryntumCalendar: FunctionComponent = () => {
+  
+ export interface IBookableResouce {
+    id: string;
+    name?: string;
+    role?: string;
+    speciality?: string;
+    fullname: string;
+    title: string;
+}
+
+export interface BryntumCalendarProps {
+    items: IBookableResouce[];
+}
+
+export const BryntumCalendar = React.memo((props: BryntumCalendarProps) => {
+    const { items } = props;
      const schedulerRef = useRef<BryntumScheduler>(null);
      const schedulerInstance = () => schedulerRef.current?.instance as Scheduler;
  
@@ -193,19 +206,25 @@
         });
     }, []);
 
-        const [resources, setResources] = useState([
-            { "id": "a", "name": "Arcady", "role": "Developer", "speciality": "Customer support" },
-            { "id": "b", "name": "Dave", "role": "Sales", "speciality": "Customer help" },
-            { "id": "c", "name": "Henrik", "role": "Sales", "speciality": "Customer support" },
-            { "id": "f", "name": "Celia", "role": "CEO", "speciality": "Customer call" },
-            { "id": "g", "name": "Lee", "role": "CTO", "speciality": "Customer Chat" },
-            { "id": "d", "name": "Madison", "role": "Developer", "speciality": "Customer support" },
-            { "id": "e", "name": "Maxim", "role": "Developer", "speciality": "Customer support" },
-            { "id": "h", "name": "Amit", "role": "Sales", "speciality": "Customer support" },
-            { "id": "i", "name": "Kate", "role": "Developer", "speciality": "Customer support" },
-            { "id": "j", "name": "Mark", "role": "Developer", "speciality": "Customer support" },
-            { "id": "k", "name": "Emilia", "role": "Developer", "speciality": "Customer support" }
-        ]);
+    const resources = React.useMemo(() => {
+        const resourceItems = items.map((i) => {
+            return getItemProps(i);
+        });
+        return resourceItems;
+    }, [items]);
+        // const [resources, setResources] = useState([
+        //     { "id": "a", "name": "Arcady", "role": "Developer", "speciality": "Customer support" },
+        //     { "id": "b", "name": "Dave", "role": "Sales", "speciality": "Customer help" },
+        //     { "id": "c", "name": "Henrik", "role": "Sales", "speciality": "Customer support" },
+        //     { "id": "f", "name": "Celia", "role": "CEO", "speciality": "Customer call" },
+        //     { "id": "g", "name": "Lee", "role": "CTO", "speciality": "Customer Chat" },
+        //     { "id": "d", "name": "Madison", "role": "Developer", "speciality": "Customer support" },
+        //     { "id": "e", "name": "Maxim", "role": "Developer", "speciality": "Customer support" },
+        //     { "id": "h", "name": "Amit", "role": "Sales", "speciality": "Customer support" },
+        //     { "id": "i", "name": "Kate", "role": "Developer", "speciality": "Customer support" },
+        //     { "id": "j", "name": "Mark", "role": "Developer", "speciality": "Customer support" },
+        //     { "id": "k", "name": "Emilia", "role": "Developer", "speciality": "Customer support" }
+        // ]);
 
         
         const [timeRanges, setTimeRanges] = useState([
@@ -283,7 +302,17 @@
              /> 
          </Fragment>
      );
- };
+ });
  
- export default BryntumCalendar;
- 
+ function getItemProps(
+    i: IBookableResouce
+): IBookableResouce {
+    return {
+        id: i.id, 
+        name: i.fullname, 
+        role: i.title, 
+        speciality: "Customer support",
+        fullname: i.fullname,
+        title: i.title
+    } as IBookableResouce;
+}

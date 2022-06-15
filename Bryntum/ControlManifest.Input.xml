@@ -18,18 +18,20 @@
       -->
     </external-service-usage>
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
-    <data-set name="sampleDataSet" display-name-key="Dataset_Display_Key">
+    <data-set name="items" display-name-key="Items">
+      <property-set name="fullname" display-name-key="Full Name" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="title" display-name-key="Title" of-type="SingleLine.Text" usage="bound" required="true" />
+    </data-set>
       <!-- 'property-set' node represents a unique, configurable property that each record in the dataset must provide. -->
       <!-- UNCOMMENT TO ADD PROPERTY-SET NODE
       <property-set name="samplePropertySet" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
       -->
-    </data-set>
     <resources>
       <code path="index.ts" order="1"/>
       <css path="css/scheduler.classic-light.css" order="1" />
       <css path="css/Bryntum.css" order="1" />
-      <css path="css/fonts/fa-solid-900.ttf" order="1" />
-      <css path="css/fonts/fa-solid-900.woff2" order="1" />
+      <!--<css path="css/fonts/fa-solid-900.ttf" order="1" />
+      <css path="css/fonts/fa-solid-900.woff2" order="1" />-->
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <resx path="strings/Bryntum.1033.resx" version="1.0.0" />
       -->
